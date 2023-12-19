@@ -18,6 +18,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class TwitterCrawler {
 
@@ -73,6 +75,9 @@ public class TwitterCrawler {
     int idx = 0;
     int elementSize = 100;
     WebDriverWait wait = new WebDriverWait(driver, 120);
+    
+    // Use GsonBuilder to create a pretty-printing Gson object
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     try (Writer writer = new FileWriter(JsonURL.TWITTER)) {
       writer.write('[');
@@ -192,11 +197,16 @@ public class TwitterCrawler {
           }
           try {
             
-            TwitterModel model = new TwitterModel(desc, author, date, relatedTags);
-            if (twitterList.stream().noneMatch(existingModel -> existingModel.getDesc().equals(descHolder[0]))) {
-              twitterList.add(model);
-              ObjectMapper mapper = new ObjectMapper();
-              writer.write(mapper.writeValueAsString(model));
+        	  TwitterModel model = new TwitterModel(desc, author, date, relatedTags);
+
+        	// Use Gson to write the JSON data with pretty printing
+              if (twitterList.stream().noneMatch(existingModel -> existingModel.getContent().equals(descHolder[0]))) {
+                  twitterList.add(model);
+                  String jsonOutput = gson.toJson(model);
+
+        	        // Write the reformatted JSON to the file
+        	        writer.write(jsonOutput);
+
             }
             
           } finally {
@@ -234,7 +244,7 @@ public class TwitterCrawler {
         }
         scrollDown(driver);
         scrollCount++;
-        if (scrollCount > 30) {
+        if (scrollCount > 100) {
           break;
         }
       }
