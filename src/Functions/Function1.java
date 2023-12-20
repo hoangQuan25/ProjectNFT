@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class Function1 {
 
     public static void main(String[] args) {
-    
+    	//Nothing
     }
     
     
@@ -46,49 +46,36 @@ public class Function1 {
     }
     
     //Show twitter posts based on hashtags
-    public static void displayTwitterFilteredPosts(String jsonFilePath, String hashtagToFilter) {
-        try {
-            String jsonString = readJsonFile(jsonFilePath);
-            JsonArray jsonArray = new Gson().fromJson(jsonString, JsonArray.class);
+    private static void displayFilteredHashtagTweet(String jsonString, String targetHashtag) {
+        Gson gson = new Gson();
+        JsonArray jsonArray = gson.fromJson(jsonString, JsonArray.class);
 
-            if (jsonArray == null) {
-                System.out.println("Invalid JSON array format.");
-                return;
+        if (jsonArray == null) {
+            System.out.println("Invalid JSON array format.");
+            return;
+        }
+
+        for (JsonElement element : jsonArray) {
+            if (!element.isJsonObject()) {
+                continue;
             }
 
-            for (JsonElement element : jsonArray) {
-                if (!element.isJsonObject()) {
-                    continue;
-                }
+            JsonObject jsonObject = element.getAsJsonObject();
+            JsonArray hashtagArray = jsonObject.getAsJsonArray("hashtags");
 
-                JsonObject jsonObject = element.getAsJsonObject();
-                JsonElement descElement = jsonObject.get("desc");
-
-                if (descElement == null || !descElement.isJsonPrimitive()) {
-                    continue;
-                }
-
-                String desc = descElement.getAsString();
-
-                if (containsExactCaseSensitiveText(desc, "#" + hashtagToFilter)) {
-                    System.out.println("Post contains #" + hashtagToFilter + ": " + desc);
-                }
+            if (containsHashtag(hashtagArray, targetHashtag)) {
+                System.out.println("Author: " + jsonObject.get("author").getAsString());
+                System.out.println("Time: " + jsonObject.get("time").getAsString());
+                System.out.println("Content: " + jsonObject.get("content").getAsString());
+                System.out.println("Hashtags: " + hashtagArray);
+                System.out.println("\n");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error processing JSON file: " + e.getMessage());
         }
     }
 
-    //Check method
-    private static boolean containsExactCaseSensitiveText(String text, String hashtag) {
-        Pattern pattern = Pattern.compile(Pattern.quote(hashtag) + "\\b");
-        Matcher matcher = pattern.matcher(text);
-        return matcher.find();
-    }
     
     //Show blog posts based on hashtags
-    private static void displayFilteredHashtagData(String jsonString, String targetHashtag) {
+    private static void displayFilteredHashtagBlog(String jsonString, String targetHashtag) {
         Gson gson = new Gson();
         JsonArray jsonArray = gson.fromJson(jsonString, JsonArray.class);
 
