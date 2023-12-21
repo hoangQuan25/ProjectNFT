@@ -1,4 +1,4 @@
-package Functions;
+package firstFunction;
 
 import java.util.HashSet;
 import java.util.Set;
