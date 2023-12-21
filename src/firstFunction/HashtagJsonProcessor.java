@@ -8,7 +8,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class TwitterJsonProcessor extends JsonProcessor {
+class HashtagJsonProcessor extends JsonProcessor {
     @Override
     boolean containsTag(JsonArray hashtagArray, String targetHashtag) {
         // Implementation specific to Twitter posts
@@ -28,11 +28,24 @@ class TwitterJsonProcessor extends JsonProcessor {
 
     @Override
     void displayUniqueContent(JsonObject jsonObject) {
-        System.out.println("Twitter Content: " + jsonObject.get("content").getAsString());
-        System.out.println("Author: " + jsonObject.get("author").getAsString());
-        System.out.println("Time: " + jsonObject.get("time").getAsString());
-        System.out.println("Hashtags: " + jsonObject.getAsJsonArray("hashtags"));
-        System.out.println("\n");
+    	if (jsonObject.has("author")) {
+    		System.out.println("Twitter Content: " + jsonObject.get("content").getAsString());
+            System.out.println("Author: " + jsonObject.get("author").getAsString());
+            System.out.println("Time: " + jsonObject.get("time").getAsString());
+            System.out.println("Hashtags: " + jsonObject.getAsJsonArray("hashtags"));
+            System.out.println("\n");
+    	}else {
+    		System.out.println("Blog Content: " + jsonObject.get("content").getAsString());
+            System.out.println("Time: " + jsonObject.get("time").getAsString());
+            if (jsonObject.has("hashtags")) {
+                System.out.println("Hashtags: " + jsonObject.getAsJsonArray("hashtags"));
+            } else if (jsonObject.has("url") && jsonObject.has("title")) {
+                System.out.println("URL: " + jsonObject.get("url").getAsString());
+                System.out.println("Title: " + jsonObject.get("title").getAsString());
+            }
+            System.out.println("\n");
+    	}
+        
     }
 
     void displayUniqueHashtags(String jsonString) {

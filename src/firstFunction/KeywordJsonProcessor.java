@@ -11,15 +11,10 @@ import com.google.gson.JsonObject;
 
 
 
-class BlogJsonProcessor extends JsonProcessor {
+class KeywordJsonProcessor extends JsonProcessor {
     @Override
     boolean containsTag(JsonArray hashtagArray, String targetHashtag) {
-        // Implementation specific to Blog posts
-        for (JsonElement hashtagElement : hashtagArray) {
-            if (hashtagElement.getAsString().equalsIgnoreCase(targetHashtag)) {
-                return true;
-            }
-        }
+        
         return false;
     }
 
@@ -72,40 +67,6 @@ class BlogJsonProcessor extends JsonProcessor {
         System.out.println("Sorted Unique Keywords:");
         uniqueKeywords.forEach(keyword -> System.out.println(keyword));
     }
-    
-  
-
-        void displayUniqueHashtags(String jsonString) {
-            Gson gson = new Gson();
-            JsonArray jsonArray = gson.fromJson(jsonString, JsonArray.class);
-
-            if (jsonArray == null) {
-                System.out.println("Invalid JSON array format.");
-                return;
-            }
-
-            TreeSet<String> uniqueHashtags = new TreeSet<>();
-            for (JsonElement element : jsonArray) {
-                if (element.isJsonObject()) {
-                    JsonObject jsonObject = element.getAsJsonObject();
-                    JsonArray hashtagArray = jsonObject.getAsJsonArray("hashtags");
-
-                    for (JsonElement hashtagElement : hashtagArray) {
-                        uniqueHashtags.add(hashtagElement.getAsString());
-                    }
-                }
-            }
-
-            System.out.println("Sorted Unique Hashtags:");
-            uniqueHashtags.forEach(hashtag -> System.out.println(hashtag));
-        }
-
-       
-
-        
-
-       
-        
-    
+      
 
 }

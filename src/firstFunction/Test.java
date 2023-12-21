@@ -35,8 +35,8 @@ public class Test {
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
-        TwitterJsonProcessor twitterProcessor = new TwitterJsonProcessor();
-        BlogJsonProcessor blogProcessor = new BlogJsonProcessor();
+        HashtagJsonProcessor twitterProcessor = new HashtagJsonProcessor();
+        KeywordJsonProcessor blogProcessor = new KeywordJsonProcessor();
 
         // Filter Twitter posts by hashtag
         twitterProcessor.displayUniqueHashtags(twitterJsonString);
@@ -47,8 +47,12 @@ public class Test {
         blogProcessor.filterByKeyword(blogJsonString, "");
         
         //Filter Blog posts by hashtag
-        blogProcessor.displayUniqueHashtags(blog2JsonString);
-        blogProcessor.filterByHashtag(blog2JsonString, "#NFT");
-
+        twitterProcessor.displayUniqueHashtags(blog2JsonString);
+        twitterProcessor.filterByHashtag(blog2JsonString, "#NFT");
+        // Display the hottest hashtag in the last day
+//        postProcessor.displayHottestHashtag(twitterJsonString, "day");
+//
+//        // Display the hottest keyword in the last week
+//        postProcessor.displayHottestKeyword(blogJsonString, "week");
     }
 }
