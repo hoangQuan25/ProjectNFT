@@ -1,19 +1,8 @@
 package firstFunction;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.Gson;
+
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 
@@ -23,6 +12,7 @@ public class Test {
         // Example usage
     	String twitterFile = "src/data/outputData/TwitterData/twitter.json";
     	String blogFile = "src/data/outputData/blogData/nftically.json";
+    	String blog2File = "src/data/outputData/blogData/nonFungible.json";
     	String twitterJsonString = null;
 		try {
 			twitterJsonString = JsonProcessor.readJsonFile(twitterFile);
@@ -38,7 +28,13 @@ public class Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		String blog2JsonString = null;
+		try {
+			blog2JsonString = JsonProcessor.readJsonFile(blog2File);
+			
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
         TwitterJsonProcessor twitterProcessor = new TwitterJsonProcessor();
         BlogJsonProcessor blogProcessor = new BlogJsonProcessor();
 
@@ -49,5 +45,10 @@ public class Test {
         // Filter Blog posts by keyword
         blogProcessor.displayUniqueKeywords(blogJsonString);
         blogProcessor.filterByKeyword(blogJsonString, "");
+        
+        //Filter Blog posts by hashtag
+        blogProcessor.displayUniqueHashtags(blog2JsonString);
+        blogProcessor.filterByHashtag(blog2JsonString, "#NFT");
+
     }
 }
