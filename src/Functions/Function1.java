@@ -18,7 +18,26 @@ import java.util.regex.Pattern;
 public class Function1 {
 
     public static void main(String[] args) {
-    
+        	String filePathTwitter = "src/data/outputData/TwitterData/twitter.json";
+        	try {
+    			String jsonString = readJsonFile(filePathTwitter);
+    			displayUniqueHashtags(jsonString);//bieu dien hashtag
+    			displayFilteredHashtagTweet(jsonString,"#NFT");//filter hastag
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+        	String filePathBlog = "src/data/outputData/blogData/nftically.json";
+        	try {
+    			String jsonString = readJsonFile(filePathBlog);
+    			displayUniqueKeywords(jsonString);//bieu dien keyword
+    			displayFilteredKeywordBlog(jsonString,"#NFT");//filter keyword
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+        	
+        	//File nonFungible.json thi dung displayFilteredHashtagBlog
     }
     
     
