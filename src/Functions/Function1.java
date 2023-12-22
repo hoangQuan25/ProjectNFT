@@ -5,6 +5,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import UI.MainScreenController;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,8 +19,15 @@ import java.util.regex.Pattern;
 
 public class Function1 {
 
+	private MainScreenController mainScreenController;
+	
+	public void setMainScreenController(MainScreenController mainScreenController) {
+		this.mainScreenController = mainScreenController;
+	}
     public static void main(String[] args) {
     	//Nothing
+    	
+    displayFilteredHashtagBlog("airnft.json","NFTs");
     }
     
     
