@@ -46,7 +46,7 @@ public class NFTNewsTodayScraper implements BlogScraper {
                 Set<String> keywords = extractKeywords(urlDocument, "span.elementor-post-info__terms-list-item");
 
                 // Create an BlogDataModel object and add it to the list
-                BlogDataModel BlogDataModel = new BlogDataModel(link, title, content, time, keywords);
+                BlogDataModel BlogDataModel = new BlogDataModel(link, title, time, content, keywords);
                 BlogDataModelList.add(BlogDataModel);
             }
 
