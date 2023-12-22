@@ -2,6 +2,10 @@ package data.blogScrapers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import data.model.BlogDataModel;
+import data.path.JsonURL;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,10 +15,12 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class NFTNewsTodayScraper {
-    public static void main(String[] args) {
+public class NFTNewsTodayScraper implements BlogScraper {
+	@Override
+    public void scrape() {
         // URL of the website
         String url = "https://nftnewstoday.com/";
 
@@ -26,7 +32,7 @@ public class NFTNewsTodayScraper {
             Set<String> urls = extractUrls(document, "h4.elementor-post__title a", "h2.elementor-post__title a", "h2.premium-blog-entry-title a");
 
             // Create a list to store the extracted data
-            Set<ExtractedData> extractedDataList = new HashSet<>();
+            Set<BlogDataModel> BlogDataModelList = new HashSet<>();
 
             // Extract data from each URL
             for (String link : urls) {
@@ -39,16 +45,16 @@ public class NFTNewsTodayScraper {
                 String content = extractContent(urlDocument);
                 Set<String> keywords = extractKeywords(urlDocument, "span.elementor-post-info__terms-list-item");
 
-                // Create an ExtractedData object and add it to the list
-                ExtractedData extractedData = new ExtractedData(link, title, content, time, keywords);
-                extractedDataList.add(extractedData);
+                // Create an BlogDataModel object and add it to the list
+                BlogDataModel BlogDataModel = new BlogDataModel(link, title, content, time, keywords);
+                BlogDataModelList.add(BlogDataModel);
             }
 
             // Convert the extracted data list to JSON using Gson
-            String jsonString = extractedDataListToJson(extractedDataList);
+            String jsonString = BlogDataModelListToJson(BlogDataModelList);
 
             // Write JSON data to a file named "nftnewstoday.json"
-            writeJsonToFile(jsonString, ".\\src\\data\\outputData\\blogData\\nftnewstoday.json");
+            writeJsonToFile(jsonString, JsonURL.NFTNEWS);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,7 +75,8 @@ public class NFTNewsTodayScraper {
     }
 
     // Helper method to extract content from <div class="elementor-widget-container">
-    private static String extractContent(Document document) {
+    @Override
+    public String extractContent(Document document) {
         Elements contentElements = document.select("div.elementor-widget-container");
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -83,7 +90,8 @@ public class NFTNewsTodayScraper {
     }
 
     // Helper method to extract keywords from <span class="elementor-post-info__terms-list-item">
-    private static Set<String> extractKeywords(Document document, String selector) {
+    @Override
+    public Set<String> extractKeywords(Document document, String selector) {
         Elements keywordElements = document.select(selector);
         Set<String> keywords = new HashSet<>();
 
@@ -95,13 +103,15 @@ public class NFTNewsTodayScraper {
     }
 
     // Helper method to convert extracted data list to JSON using Gson
-    private static String extractedDataListToJson(Set<ExtractedData> extractedDataList) {
+    @Override
+    public String BlogDataModelListToJson(Set<BlogDataModel> BlogDataModelList) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(extractedDataList);
+        return gson.toJson(BlogDataModelList);
     }
 
     // Helper method to write JSON data to a file
-    private static void writeJsonToFile(String json, String fileName) {
+    @Override
+    public void writeJsonToFile(String json, String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(json);
         } catch (IOException e) {
@@ -109,40 +119,22 @@ public class NFTNewsTodayScraper {
         }
     }
 
-    // Data class to represent the extracted data
-    static class ExtractedData {
-        private final String url;
-        private final String title;
-        private final String content;
-        private final String time;
-        private final Set<String> keywords;
+	@Override
+	public BlogDataModel extractDataFromUrl(String url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-        public ExtractedData(String url, String title, String content, String time, Set<String> keywords) {
-            this.url = url;
-            this.title = title;
-            this.content = content;
-            this.time = time;
-            this.keywords = keywords;
-        }
+	@Override
+	public String extractTime(Element timeElement) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-        public String getUrl() {
-            return url;
-        }
+	@Override
+	public String blogDataModelListToJson(List<BlogDataModel> blogDataModelList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-        public String getTitle() {
-            return title;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public String getTime() {
-            return time;
-        }
-
-        public Set<String> getKeywords() {
-            return keywords;
-        }
-    }
 }
