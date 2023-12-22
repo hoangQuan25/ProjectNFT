@@ -1,4 +1,4 @@
-package firstFunction;
+package Functions.function1;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

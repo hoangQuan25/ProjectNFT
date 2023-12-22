@@ -1,4 +1,4 @@
-package firstFunction;
+package Functions.function1;
 
 
 

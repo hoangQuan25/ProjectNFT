@@ -1,4 +1,4 @@
-package firstFunction;
+package Functions.function1;
 
 import java.util.Set;
 import java.util.TreeSet;
