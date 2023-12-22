@@ -1,9 +1,17 @@
 package Functions.function1;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -61,4 +69,36 @@ class HashtagJsonProcessor extends JsonProcessor {
         uniqueHashtags.forEach(hashtag -> System.out.print(hashtag + "\n"));
         System.out.println();
     }
+    
+    public String findMostPopularHashtag(List<JsonObject> posts) {
+        // Create a map to store the count of each hashtag
+        Map<String, Integer> hashtagCountMap = new HashMap<>();
+
+        // Iterate through each post and count the hashtags
+        for (JsonObject post : posts) {
+            JsonArray hashtags = post.getAsJsonArray("hashtags");
+            if (hashtags != null) {
+                for (int i = 0; i < hashtags.size(); i++) {
+                    String hashtag = hashtags.get(i).getAsString();
+                    hashtagCountMap.put(hashtag, hashtagCountMap.getOrDefault(hashtag, 0) + 1);
+                }
+            }
+        }
+
+        // Find the most popular hashtag
+        String mostPopularHashtag = null;
+        int maxCount = 0;
+
+        for (Map.Entry<String, Integer> entry : hashtagCountMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostPopularHashtag = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
+
+        return mostPopularHashtag;
+    }
 }
+    
+    
+    
