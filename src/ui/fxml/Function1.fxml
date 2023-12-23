@@ -110,6 +110,9 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </TextArea>
                   <RadioButton fx:id="radiobtnTweet" mnemonicParsing="false" selected="true" text="Tweet">
                      <HBox.margin>
@@ -138,11 +141,20 @@
                   </RadioButton>
                </children>
             </HBox>
-            <ListView fx:id="lvResultHashtag" prefHeight="384.0" prefWidth="745.0" style="-fx-background-color: #EEEEEE;" GridPane.rowIndex="1">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </ListView>
+            <TableView fx:id="tblViewResult" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="colTitle" prefWidth="205.0" text="Title" />
+                <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="131.0" text="Date" />
+                  <TableColumn fx:id="colHashtagKeyword" minWidth="0.0" prefWidth="169.0" text="Hashtag/Keyword" />
+                  <TableColumn fx:id="colContent" minWidth="0.0" prefWidth="253.0" text="Twitter content/Blog content" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </TableView>
          </children>
       </GridPane>
    </children>

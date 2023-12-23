@@ -11,9 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
@@ -33,7 +35,19 @@ public class Function1Controller implements HandleEvent{
 	}
 	
 	@FXML
-	private ListView<JsonArray> lvResultHashtag;
+    private TableView<?> tblViewResult;
+	
+	@FXML
+    private TableColumn<?, ?> colHashtagKeyword;
+
+	@FXML
+    private TableColumn<?, ?> colDate;
+	
+	@FXML
+    private TableColumn<?, ?> colContent;
+	
+	@FXML
+    private TableColumn<?, ?> colTitle; 
 	
 	@FXML
     private RadioButton radiobtnBlog;
@@ -45,7 +59,7 @@ public class Function1Controller implements HandleEvent{
     private MenuItem btnAbout;
 	
     @FXML
-    private TextField tfSearchHashtag;
+    private TextArea tfSearchHashtag;
 
     @FXML
     private ToggleGroup choiceSearch;

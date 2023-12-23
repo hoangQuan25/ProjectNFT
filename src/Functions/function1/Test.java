@@ -47,7 +47,7 @@ public class Test {
 
         // Filter Blog posts by keyword
         blogProcessor.displayUniqueKeywords(blogJsonString);
-        blogProcessor.filterByKeyword(blogJsonString, "");
+        blogProcessor.filterByKeyword(blogJsonString, "3D NFTs");
         
         //Filter Blog posts by hashtag
         blogProcessor.displayUniqueKeywords(blog2JsonString);
