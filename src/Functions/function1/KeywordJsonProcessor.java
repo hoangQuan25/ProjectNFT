@@ -1,17 +1,27 @@
 package Functions.function1;
 
-import java.util.Set;
-import java.util.TreeSet;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 
 
 class KeywordJsonProcessor extends JsonProcessor {
+	
     @Override
     boolean containsTag(JsonArray hashtagArray, String targetHashtag) {
         
@@ -67,6 +77,34 @@ class KeywordJsonProcessor extends JsonProcessor {
         System.out.println("Sorted Unique Keywords:");
         uniqueKeywords.forEach(keyword -> System.out.println(keyword));
     }
-      
+    
+    public String findMostPopularKeyword(List<JsonObject> posts) {
+        // Create a map to store the count of each keyword
+        Map<String, Integer> keywordCountMap = new HashMap<>();
 
+        // Iterate through each post and count the keywords
+        for (JsonObject post : posts) {
+            JsonArray keywords = post.getAsJsonArray("keywords");
+            if (keywords != null) {
+                for (int i = 0; i < keywords.size(); i++) {
+                    String keyword = keywords.get(i).getAsString();
+                    keywordCountMap.put(keyword, keywordCountMap.getOrDefault(keyword, 0) + 1);
+                }
+            }
+        }
+
+        // Find the most popular keyword
+        String mostPopularKeyword = null;
+        int maxCount = 0;
+
+        for (Map.Entry<String, Integer> entry : keywordCountMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostPopularKeyword = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
+
+        return mostPopularKeyword;
+    }
+    
 }
