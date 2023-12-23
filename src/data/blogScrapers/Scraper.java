@@ -2,7 +2,7 @@ package data.blogScrapers;
 
 public class Scraper {
 
-    public static void main(String[] args) {
+    public void scrape() {
         AirnftScraper airnft = new AirnftScraper();
         NfticallyScraper nftically = new NfticallyScraper();
         NFTNewsTodayScraper nftnews = new NFTNewsTodayScraper();

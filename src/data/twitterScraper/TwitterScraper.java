@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import data.model.TwitterModel;
-import data.path.JsonURL;
+import util.path.JsonURL;
 
 public class TwitterScraper {
 
