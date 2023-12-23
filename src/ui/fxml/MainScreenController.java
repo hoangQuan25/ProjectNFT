@@ -14,7 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class MainScreenController implements HandleEvent{
-	
+	private Stage stage;
 	public MainScreenController() {
 		
 	}
@@ -55,9 +55,8 @@ public class MainScreenController implements HandleEvent{
 	    }
 
 	    @FXML
-	    public void runFunction2(ActionEvent event) {
+	    public void runFunction2(ActionEvent event){
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/fxml/Function2.fxml"));
-	    	//Function2Controller function2Controller = loader.getController();
 	    	createStage(loader);
 	    }
 	    
@@ -72,12 +71,13 @@ public class MainScreenController implements HandleEvent{
 	    }
 	    
 	    private void createStage(FXMLLoader loader) {
-	    	Scene scene = null;
-    		try {
-    			scene = new Scene(loader.load()); 
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    	}
+	    	Scene scene= null;
+			try {
+				scene = new Scene(loader.load());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     	Stage stage = new Stage();
     	stage.setScene(scene);
     	stage.setTitle("Project OOP");
