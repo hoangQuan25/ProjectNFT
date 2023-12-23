@@ -47,8 +47,8 @@ public class Test {
         blogProcessor.filterByKeyword(blogJsonString, "");
         
         //Filter Blog posts by hashtag
-        twitterProcessor.displayUniqueHashtags(blog2JsonString);
-        twitterProcessor.filterByHashtag(blog2JsonString, "#NFT");
+        blogProcessor.displayUniqueKeywords(blog2JsonString);
+        blogProcessor.filterByKeyword(blog2JsonString, "#Virtual Races");
         // Display the hottest hashtag in the last day
 //        postProcessor.displayHottestHashtag(twitterJsonString, "day");
 //
