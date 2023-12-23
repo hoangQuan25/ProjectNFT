@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,9 +17,7 @@ import java.util.regex.Pattern;
 
 public class Function1 {
 
-
     public static void main(String[] args) {
-
 
     }
     
