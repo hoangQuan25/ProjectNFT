@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import data.model.BlogDataModel;
-import data.path.JsonURL;
+import util.path.JsonURL;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
