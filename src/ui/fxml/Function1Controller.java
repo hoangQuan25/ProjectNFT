@@ -2,6 +2,8 @@ package ui.fxml;
 
 import java.io.IOException;
 
+import com.google.gson.JsonArray;
+
 import Functions.Function1;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
@@ -27,6 +31,15 @@ public class Function1Controller implements HandleEvent{
 	public Function1Controller() {
 	
 	}
+	
+	@FXML
+	private ListView<JsonArray> lvResultHashtag;
+	
+	@FXML
+    private RadioButton radiobtnBlog;
+	
+	@FXML
+    private RadioButton radiobtnTweet;
 	
 	@FXML
     private MenuItem btnAbout;

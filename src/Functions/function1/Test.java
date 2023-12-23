@@ -4,6 +4,8 @@ package Functions.function1;
 
 import java.io.IOException;
 
+import com.google.gson.JsonArray;
+
 
 
 public class Test {
@@ -35,7 +37,8 @@ public class Test {
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
-        HashtagJsonProcessor twitterProcessor = new HashtagJsonProcessor();
+		JsonArray hashtagArray = new JsonArray();
+        HashtagJsonProcessor twitterProcessor = new HashtagJsonProcessor(hashtagArray);
         KeywordJsonProcessor blogProcessor = new KeywordJsonProcessor();
 
         // Filter Twitter posts by hashtag
