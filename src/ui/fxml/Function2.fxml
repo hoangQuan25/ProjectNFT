@@ -103,7 +103,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <RadioButton mnemonicParsing="false" selected="true" text="Day">
+                  <RadioButton fx:id="radiobtnTwitter" mnemonicParsing="false" text="Twitter">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -117,7 +117,7 @@
                         <ToggleGroup fx:id="choiceSearch" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Week" toggleGroup="$choiceSearch">
+                  <RadioButton fx:id="radiobtnBlog" mnemonicParsing="false" text="Blog" toggleGroup="$choiceSearch">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -128,24 +128,45 @@
                         <Insets />
                      </opaqueInsets>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Month" toggleGroup="$choiceSearch">
+                  <MenuButton mnemonicParsing="false" text="Platform">
+                    <items>
+                      <MenuItem fx:id="menuItemDay" mnemonicParsing="false" text="Day" />
+                      <MenuItem fx:id="menuItemWeek" mnemonicParsing="false" text="Week" />
+                        <MenuItem fx:id="menuItemMonth" mnemonicParsing="false" text="Month" />
+                    </items>
                      <font>
                         <Font size="14.0" />
                      </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                      <HBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
+                        <Insets left="10.0" top="5.0" />
                      </HBox.margin>
-                  </RadioButton>
+                  </MenuButton>
                </children>
             </HBox>
-            <ListView prefHeight="384.0" prefWidth="745.0" style="-fx-background-color: #EEEEEE;" GridPane.rowIndex="1">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </ListView>
+            <TableView fx:id="tblViewTwitterResult" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="colAuthor" prefWidth="128.0" resizable="false" text="Author/Title" />
+                  <TableColumn fx:id="colTime" minWidth="0.0" prefWidth="103.0" resizable="false" text="Time" />
+                  <TableColumn fx:id="colHashtags" minWidth="0.0" prefWidth="212.0" resizable="false" text="Hashtag/Keyword" />
+                  <TableColumn fx:id="colContent" minWidth="0.0" prefWidth="240.0" text="Content" />
+                  <TableColumn fx:id="colUrl" minWidth="0.0" prefWidth="76.0" resizable="false" text="url" />
+               </columns>
+            </TableView>
+            <TableView fx:id="tblViewBlogResult" prefHeight="0.0" prefWidth="760.0" visible="false" GridPane.rowIndex="1">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="colTitle" prefWidth="128.0" resizable="false" text="Author/Title" />
+                  <TableColumn fx:id="colTime1" minWidth="0.0" prefWidth="103.0" resizable="false" text="Time" />
+                  <TableColumn fx:id="colKeywords" minWidth="0.0" prefWidth="212.0" resizable="false" text="Hashtag/Keyword" />
+                  <TableColumn fx:id="colContent1" minWidth="0.0" prefWidth="240.0" text="Content" />
+                  <TableColumn fx:id="colUrl1" minWidth="0.0" prefWidth="76.0" resizable="false" text="url" />
+               </columns>
+            </TableView>
          </children>
       </GridPane>
    </children>

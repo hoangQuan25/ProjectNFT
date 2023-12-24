@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class TestFunc2 {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 	    HashtagJsonProcessor hashtagJsonProcessor = new HashtagJsonProcessor();
 	    String twitterString = null;
 		try {
@@ -238,5 +238,7 @@ public class TestFunc2 {
 	    } else {
 	        System.out.println("Error processing JSON file.");
 	    }
-	}
+<<<<<<< HEAD
+	}*/
 }
+

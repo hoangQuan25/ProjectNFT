@@ -14,14 +14,53 @@
             <Image url="@hustimage.png" />
          </image>
       </ImageView>
-      <TextArea editable="false" layoutX="29.0" layoutY="67.0" prefHeight="225.0" prefWidth="539.0" text="This is an application designed for the purpose of performing NFTs news collecting.&#10;It was created as part of  the Object Oriented Programming course-IT3103 to study and get used to the priciples of object-oriented design and programming paradigms.&#10;My team includes 6 people:&#10;1. Nguyen Minh Duy - 20210270&#10;2. Nguyen Hoang Quan - 20210000&#10;3. Mai Nhat Minh - 20210000&#10;4. Vo Son Long - 20210000&#10;5. Do Gia Huy - 20210000&#10;6. Nguyen Trung Duc - 20210000" wrapText="true">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </TextArea>
       <Label layoutX="50.0" layoutY="22.0" prefHeight="45.0" prefWidth="107.0" text="HELLO">
          <font>
             <Font size="30.0" />
+         </font>
+      </Label>
+      <VBox alignment="TOP_CENTER" layoutX="49.0" layoutY="67.0" prefHeight="88.0" prefWidth="502.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="This is an application designed for the purpose of performing NFTs news collecting.&#10;It was created as part of  the Object Oriented Programming course-IT3103 to study and get used to the priciples of object-oriented design and programming paradigms.&#10;" textAlignment="CENTER" wrappingWidth="501.40185546875">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Label text="My team includes 6 people:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="198.0" layoutY="170.0" text="1. Nguyen Trung Duc - 20210201">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="190.0" text="2. Nguyen Minh Duy - 20210270">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="210.0" text="3. Do Gia Huy - 20215060">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="230.0" text="4. Mai Nhat Minh - 20215090">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="250.0" text="5. Vo Son Long - 20215082">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="270.0" text="6. Nguyen Hoang Quan - 20215127">
+         <font>
+            <Font size="14.0" />
          </font>
       </Label>
    </children>
