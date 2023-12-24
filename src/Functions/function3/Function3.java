@@ -1,9 +1,8 @@
-package Functions;
+package Functions.function3;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import Functions.function3.*;
 import Functions.function3.apiNFT.RaribleItem;
 
 import java.io.FileReader;

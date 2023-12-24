@@ -344,7 +344,5 @@ public class Function1Controller implements HandleEvent{
 		controller = loader.getController();
 		controller.setTwitterNews(entity);
 		createStage(loader);
-		
-		
 	}
 }
