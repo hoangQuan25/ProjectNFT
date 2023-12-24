@@ -1,7 +1,16 @@
 package ui.fxml;
 
+import java.awt.Dimension;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import Functions.function1.JsonProcessor;
 import Functions.function1.blogNews;
@@ -31,15 +40,11 @@ import util.path.JsonURL;
 public class Function1Controller implements HandleEvent{
 	private Functions.function1.detailTwitter detailTwitter;
 	private Functions.function1.detailBlog detailBlog;
-	//private twitterViewController twitterView;
-	//private blogViewController blogView;
-	
+
 	public Function1Controller() {
-		super();
+		//super();
 		this.detailTwitter = new Functions.function1.detailTwitter();
 		this.detailBlog = new Functions.function1.detailBlog();
-		//this.twitterView = new twitterViewController();
-		//this.blogView = new blogViewController();
 	}
 
 	@FXML
@@ -218,7 +223,12 @@ public class Function1Controller implements HandleEvent{
                  if (event.getClickCount() == 2 && (!row.isEmpty())) {
                      twitterNews obj = row.getItem();
                      //System.out.println(obj.getAuthor() +"\n"+ obj.getTime()+"\n" +obj.getContent()+"\n" + obj.getHashtags());
-                     createTwitterView(obj);
+                     try {
+						createTwitterView(obj);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                  }
              });
              return row;
@@ -326,19 +336,55 @@ public class Function1Controller implements HandleEvent{
 	}
 	
 	private void createBlogView(blogNews entity) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/fxml/blogView.fxml"));
-		blogViewController controller = new blogViewController(entity);
-		controller = loader.getController();
-		createStage(loader);
+		JPanel blogPanel = new JPanel();
+        blogPanel.setLayout(new BoxLayout(blogPanel, BoxLayout.Y_AXIS));
+        blogPanel.setPreferredSize(new Dimension(600, 600)); // Set a fixed size for the JPanel
+        // Add components to the blog view panel
+        JLabel titleLabel = new JLabel("Title: " + entity.getTitle());
+        JLabel timeLabel = new JLabel("Time: " + entity.getTime());
+        JLabel keywordsLabel = new JLabel("Keywords: " + String.join(", ", entity.getKeywords()));
+        
+        // Create a JTextArea for the content
+        JTextArea contentArea = new JTextArea(entity.getContent());
+        contentArea.setEditable(false);
+        contentArea.setLineWrap(true); // Enable text wrapping
+        contentArea.setWrapStyleWord(true); // Wrap at word boundaries
+
+        // Wrap the content area in a JScrollPane for scrolling
+        JScrollPane contentScrollPane = new JScrollPane(contentArea);
+
+        JLabel urlLabel = new JLabel("URL: " + entity.getUrl());
+
+        blogPanel.add(titleLabel);
+        blogPanel.add(timeLabel);
+        blogPanel.add(keywordsLabel);
+        blogPanel.add(contentScrollPane); // Add the JScrollPane instead of the JTextArea directly
+        blogPanel.add(urlLabel);
+
+        // Show the JOptionPane with the custom blog view panel
+        JOptionPane.showMessageDialog(null, blogPanel, "Blog View", JOptionPane.PLAIN_MESSAGE);
 	}
 	
-	private void createTwitterView(twitterNews entity) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/fxml/twitterView.fxml"));
-		twitterViewController controller = new twitterViewController(entity);
-		controller = loader.getController();
-		controller.setTwitterNews(entity);
-		createStage(loader);
-		
-		
+	private void createTwitterView(twitterNews entity) throws IOException{
+		 JPanel twitterPanel = new JPanel();
+	        twitterPanel.setLayout(new BoxLayout(twitterPanel, BoxLayout.Y_AXIS));
+	        twitterPanel.setPreferredSize(new Dimension(500, 300));
+
+	        JLabel authorLabel = new JLabel("Author: " + entity.getAuthor());
+	        JLabel hashtagsLabel = new JLabel("Hashtags: " + String.join(", ", entity.getHashtags()));
+	        JTextArea contentArea = new JTextArea(entity.getContent());
+	        contentArea.setEditable(false);
+	        contentArea.setLineWrap(true);
+	        contentArea.setWrapStyleWord(true);
+	        contentArea.setPreferredSize(new Dimension(400, 150));
+
+	        JLabel timeLabel = new JLabel("Time: " + entity.getTime().formatted(DateTimeFormatter.ISO_DATE_TIME));
+
+	        twitterPanel.add(authorLabel);
+	        twitterPanel.add(hashtagsLabel);
+	        twitterPanel.add(contentArea);
+	        twitterPanel.add(timeLabel);
+
+	        JOptionPane.showMessageDialog(null, twitterPanel, "Twitter View", JOptionPane.PLAIN_MESSAGE);
 	}
 }

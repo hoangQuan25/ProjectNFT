@@ -130,9 +130,9 @@
                   </RadioButton>
                   <MenuButton mnemonicParsing="false" text="Platform">
                     <items>
-                      <MenuItem fx:id="menuItemDay" mnemonicParsing="false" text="Day" />
-                      <MenuItem fx:id="menuItemWeek" mnemonicParsing="false" text="Week" />
-                        <MenuItem fx:id="menuItemMonth" mnemonicParsing="false" text="Month" />
+                      <MenuItem fx:id="menuItemDay" mnemonicParsing="false" onAction="#btnDayPressed" text="Day" />
+                      <MenuItem fx:id="menuItemWeek" mnemonicParsing="false" onAction="#btnWeekPressed" text="Week" />
+                        <MenuItem fx:id="menuItemMonth" mnemonicParsing="false" onAction="#btnMonthPressed" text="Month" />
                     </items>
                      <font>
                         <Font size="14.0" />
