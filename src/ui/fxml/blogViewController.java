@@ -40,10 +40,21 @@ public class blogViewController {
     }
     
     public void setBlogNews(blogNews entity) {
-        textTitle.setText(entity.getTitle());
-        textTime.setText(entity.getTime());
-        textKeywords.setText(String.join(", ", entity.getKeywords()));
-        textContent.setText(entity.getContent());
-        textURL.setText(entity.getUrl());
+        if (entity != null) {
+            textTitle.setText(entity.getTitle());
+            textTime.setText(entity.getTime());
+            textKeywords.setText(String.join(", ", entity.getKeywords()));
+            textContent.setText(entity.getContent());
+            textURL.setText(entity.getUrl());
+        } else {
+            // Handle the case where entity is null (optional, depending on your requirements)
+            // For example, you might want to clear the text fields or set default values.
+            textTitle.setText("");
+            textTime.setText("");
+            textKeywords.setText("");
+            textContent.setText("");
+            textURL.setText("");
+        }
     }
+
 }
