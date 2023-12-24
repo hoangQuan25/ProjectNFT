@@ -10,14 +10,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.fxml.MainScreenController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="230.0" layoutY="220.0" prefHeight="422.0" prefWidth="795.0">
+      <VBox alignment="CENTER" layoutX="230.0" layoutY="220.0" prefHeight="422.0" prefWidth="795.0">
          <children>
-            <Label fx:id="lblMain" text="Label">
+            <ImageView fitHeight="335.0" fitWidth="600.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Beeple.jpg" />
+               </image>
+            </ImageView>
+            <Label text="Mike Winkelmann, AKA Beeple">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </Label>
          </children></VBox>

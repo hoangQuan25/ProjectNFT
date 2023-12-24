@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.fxml.twitterViewController">
+   <children>
+      <ScrollPane fx:id="scroll" layoutX="-1.0" layoutY="1.0" prefHeight="600.0" prefWidth="600.0">
+         <content>
+            <VBox fx:id="claimContainer" prefHeight="602.0" prefWidth="600.0">
+               <children>
+                  <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="103.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Author:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Text fx:id="textTitle" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="501.826171875">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="6.0" top="20.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Time:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Text fx:id="textTime" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="190.826171875">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="6.0" top="20.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Hashtags:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Text fx:id="textKeywords" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="461.826171875">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="6.0" top="20.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Content:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Text fx:id="textContent" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="461.826171875">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="6.0" top="20.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

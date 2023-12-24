@@ -1,8 +1,10 @@
 package ui.fxml;
 
 import java.io.IOException;
+import java.util.List;
 
-import Functions.Function2;
+import Functions.function1.blogNews;
+import Functions.function1.twitterNews;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,40 +12,89 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class Function2Controller implements HandleEvent{
 	
-	private Function2 fn2;
-	
-	public Function2Controller(Function2 fn2) {
-		super();
-		this.fn2 = fn2;
-	}
-	
 	public Function2Controller() {
 	
 	}
-	
-	@FXML
+
+    @FXML
+    private MenuItem menuItemMonth;
+
+    @FXML
+    private ToggleGroup choiceSearch;
+
+    @FXML
+    private RadioButton radiobtnBlog;
+
+    @FXML
     private MenuItem btnAbout;
-	
-	 @FXML
-	    private ToggleGroup choiceSearch;
 
-	    @FXML
-	    private Button btnGetUpdate;
+    @FXML
+    private MenuItem menuItemDay;
 
-	    @FXML
-	    private Button btnFunction2;
+    @FXML
+    private MenuItem menuItemWeek;
 
-	    @FXML
-	    private Button btnFunction3;
+    @FXML
+    private Button btnGetUpdate;
 
-	    @FXML
-	    private Button btnFunction1;
+    @FXML
+    private Button btnFunction2;
+
+    @FXML
+    private RadioButton radiobtnTwitter;
+
+    @FXML
+    private Button btnFunction3;
+
+    @FXML
+    private Button btnFunction1;
+    
+    @FXML
+    private TableColumn<blogNews, String> colTime1;
+
+    @FXML
+    private TableColumn<twitterNews, String> colTime;
+
+    @FXML
+    private TableColumn<twitterNews, List<String>> colHashtags;
+    
+    @FXML
+    private TableColumn<twitterNews, String> colAuthor;
+
+    @FXML
+    private TableColumn<blogNews, String> colAuthor1;
+
+    @FXML
+    private TableView<blogNews> tblViewBlogResult;
+    
+    @FXML
+    private TableColumn<blogNews, String> colContent1;
+
+    @FXML
+    private TableView<twitterNews> tblViewTwitterResult;
+
+    @FXML
+    private TableColumn<blogNews, String> colUrl1;
+
+    @FXML
+    private TableColumn<twitterNews, String> colUrl;
+
+    @FXML
+    private TableColumn<twitterNews, String> colContent;
+    
+    @FXML
+    private TableColumn<blogNews, List<String>> colKeywords;
+
+    
     public void initialize() {
         // Initialization logic goes here
     }
