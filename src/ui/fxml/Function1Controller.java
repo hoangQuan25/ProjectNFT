@@ -35,6 +35,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import util.path.JsonURL;
 
 public class Function1Controller implements HandleEvent{
 	private Functions.function1.detailTwitter detailTwitter;
@@ -244,13 +245,6 @@ public class Function1Controller implements HandleEvent{
 
 	@Override
 	public void btnGetUpdatePressed(ActionEvent event) {
-		// TODO Auto-generated method stub
-		String twitterFile = "src/data/outputData/TwitterData/twitter.json";
-    	String blogFile = "src/data/outputData/blogData/nftically.json";
-    	String blog2File = "src/data/outputData/blogData/nonFungible.json";
-    	String blog3File = "src/data/outputData/blogData/nftnewstoday.json";
-    	String blog4File = "src/data/outputData/blogData/airnft.json";
-    	
     	String twitterJsonString = null;
     	String blogJsonString = null;
     	String blog2JsonString = null;
@@ -258,7 +252,7 @@ public class Function1Controller implements HandleEvent{
     	String blog4JsonString = null;
 
 		try {
-			twitterJsonString = JsonProcessor.readJsonFile(twitterFile);
+			twitterJsonString = JsonProcessor.readJsonFile(JsonURL.TWITTER);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -266,27 +260,27 @@ public class Function1Controller implements HandleEvent{
 		}
     	
 		try {
-			blogJsonString = JsonProcessor.readJsonFile(blogFile);
+			blogJsonString = JsonProcessor.readJsonFile(JsonURL.NFTIFICALLY);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			blog2JsonString = JsonProcessor.readJsonFile(blog2File);
+			blog2JsonString = JsonProcessor.readJsonFile(JsonURL.NONFUNGIBLE);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			blog3JsonString = JsonProcessor.readJsonFile(blog3File);
+			blog3JsonString = JsonProcessor.readJsonFile(JsonURL.NFTNEWS);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			blog4JsonString = JsonProcessor.readJsonFile(blog4File);
+			blog4JsonString = JsonProcessor.readJsonFile(JsonURL.AIRNFT);
 			
 		}catch (IOException e) {
 			e.printStackTrace();
