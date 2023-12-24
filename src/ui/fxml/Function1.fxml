@@ -81,7 +81,7 @@
             </Label>
          </children>
       </VBox>
-      <GridPane layoutX="239.0" layoutY="192.0" prefHeight="431.0" prefWidth="762.0" style="-fx-border-color: #8c2709;">
+      <GridPane layoutX="239.0" layoutY="192.0" prefHeight="431.0" prefWidth="762.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -114,7 +114,7 @@
                         <Insets top="5.0" />
                      </padding>
                   </TextArea>
-                  <RadioButton fx:id="radiobtnTweet" mnemonicParsing="false" selected="true" text="Tweet">
+                  <RadioButton fx:id="radiobtnTwitter" mnemonicParsing="false" text="Twitter">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -141,16 +141,32 @@
                   </RadioButton>
                </children>
             </HBox>
-            <TableView fx:id="tblViewResult" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TableView fx:id="tblViewTwitterResult" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
               <columns>
-                <TableColumn fx:id="colTitle" prefWidth="205.0" text="Title" />
-                <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="131.0" text="Date" />
-                  <TableColumn fx:id="colHashtagKeyword" minWidth="0.0" prefWidth="169.0" text="Hashtag/Keyword" />
-                  <TableColumn fx:id="colContent" minWidth="0.0" prefWidth="253.0" text="Twitter content/Blog content" />
+                <TableColumn fx:id="colAuthor" prefWidth="128.0" resizable="false" text="Author/Title" />
+                <TableColumn fx:id="colTime" minWidth="0.0" prefWidth="103.0" resizable="false" text="Time" />
+                  <TableColumn fx:id="colHashtags" minWidth="0.0" prefWidth="212.0" resizable="false" text="Hashtag/Keyword" />
+                  <TableColumn fx:id="colContent" minWidth="0.0" prefWidth="240.0" text="Content" />
+                  <TableColumn fx:id="colUrl" minWidth="0.0" prefWidth="76.0" resizable="false" text="url" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </TableView>
+            <TableView fx:id="tblViewBlogResult" prefHeight="0.0" prefWidth="760.0" visible="false" GridPane.rowIndex="1">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="colAuthor1" prefWidth="128.0" resizable="false" text="Author/Title" />
+                  <TableColumn fx:id="colTime1" minWidth="0.0" prefWidth="103.0" resizable="false" text="Time" />
+                  <TableColumn fx:id="colKeywords" minWidth="0.0" prefWidth="212.0" resizable="false" text="Hashtag/Keyword" />
+                  <TableColumn fx:id="colContent1" minWidth="0.0" prefWidth="240.0" text="Content" />
+                  <TableColumn fx:id="colUrl1" minWidth="0.0" prefWidth="76.0" resizable="false" text="url" />
+               </columns>
                <GridPane.margin>
                   <Insets top="5.0" />
                </GridPane.margin>

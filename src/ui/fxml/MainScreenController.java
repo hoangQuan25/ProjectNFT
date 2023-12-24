@@ -2,6 +2,7 @@ package ui.fxml;
 
 import java.io.IOException;
 
+import Functions.function1.JsonProcessor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +15,15 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class MainScreenController implements HandleEvent{
-	private Stage stage;
+	//private Stage stage;
+	private Functions.function1.detailTwitter detailTwitter;
+	private Functions.function1.detailBlog detailBlog;
+	
 	public MainScreenController() {
-		
-	}
+		super();
+		this.detailTwitter = new Functions.function1.detailTwitter();
+		this.detailBlog = new Functions.function1.detailBlog();
+	}	
 	
 	  @FXML
 	    private Button btnGetUpdate;
@@ -27,9 +33,6 @@ public class MainScreenController implements HandleEvent{
 
 	    @FXML
 	    private Button btnFunction3;
-
-	    @FXML
-	    private Label lblMain;
 	    
 	    @FXML
 	    private MenuItem menuAbout;
@@ -39,6 +42,7 @@ public class MainScreenController implements HandleEvent{
 
 	    @FXML
 	    public void btnGetUpdatePressed(ActionEvent event) {
+	    	
 	    	Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("Notice");
 	        alert.setHeaderText(null);
