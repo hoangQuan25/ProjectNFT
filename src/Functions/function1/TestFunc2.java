@@ -238,5 +238,7 @@ public class TestFunc2 {
 	    } else {
 	        System.out.println("Error processing JSON file.");
 	    }
+<<<<<<< HEAD
 	}*/
 }
+
