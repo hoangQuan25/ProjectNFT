@@ -8,9 +8,7 @@ import javafx.scene.text.Text;
 
 public class blogViewController {
 	private blogNews entity;
-	public blogViewController() {
-		
-	}
+	
 	public blogViewController(blogNews entity) {
 		this.entity = entity;
 	}
