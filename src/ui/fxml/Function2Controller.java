@@ -331,22 +331,35 @@ public class Function2Controller implements HandleEvent {
 		ObservableList<twitterNews> listTwitter =  FXCollections.observableArrayList();
 		listTwitter = detailTwitter.getPostsForDay(detailTwitter.getListTwitter(),"2023-12-20");
 		
+		FilteredList<blogNews> filteredListBlog = new FilteredList<>(listBlog, p -> true);
+        tblViewBlogResult.setItems(filteredListBlog);
+        FilteredList<twitterNews> filteredListTwitter = new FilteredList<>(listTwitter, p -> true);
+        tblViewTwitterResult.setItems(filteredListTwitter);
+        	
     }
 
     @FXML
     void btnWeekPressed(ActionEvent event) {
     	ObservableList<blogNews> listBlog = FXCollections.observableArrayList();
-		listBlog = detailBlog.getPostsForWeek(detailBlog.getListBlog(), "2023-12-09");
+		listBlog = detailBlog.getPostsForWeek(detailBlog.getListBlog(), "2023-10-01");
 		ObservableList<twitterNews> listTwitter =  FXCollections.observableArrayList();
 		listTwitter = detailTwitter.getPostsForWeek(detailTwitter.getListTwitter(),"2023-12-15");
+		FilteredList<blogNews> filteredListBlog = new FilteredList<>(listBlog, p -> true);
+        tblViewBlogResult.setItems(filteredListBlog);
+        FilteredList<twitterNews> filteredListTwitter = new FilteredList<>(listTwitter, p -> true);
+        tblViewTwitterResult.setItems(filteredListTwitter);
     }
 
     @FXML
     void btnMonthPressed(ActionEvent event) {
     	ObservableList<blogNews> listBlog = FXCollections.observableArrayList();
-		listBlog = detailBlog.getPostsForWeek(detailBlog.getListBlog(), "2023-12-09");
+		listBlog = detailBlog.getPostsForWeek(detailBlog.getListBlog(), "2023-05-05");
 		ObservableList<twitterNews> listTwitter =  FXCollections.observableArrayList();
 		listTwitter = detailTwitter.getPostsForWeek(detailTwitter.getListTwitter(),"2023-12-01");
+		FilteredList<blogNews> filteredListBlog = new FilteredList<>(listBlog, p -> true);
+        tblViewBlogResult.setItems(filteredListBlog);
+        FilteredList<twitterNews> filteredListTwitter = new FilteredList<>(listTwitter, p -> true);
+        tblViewTwitterResult.setItems(filteredListTwitter);
     }
 	
 	private void createBlogView(blogNews entity) throws IOException {
