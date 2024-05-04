@@ -6,6 +6,18 @@ import util.path.JsonURL;
 
 public class testBlog {
 	
+	 
+	    public static void testIsInTargetWeek_Negative() {
+	        detailBlog weekUtil = new detailBlog();
+	        if(   weekUtil.isInTargetWeek("2024-05-04", "2024-04-28")) { // Tuesday in a different week) {
+	        	System.out.println("right");
+	        	
+	        }
+	        else {
+	        	System.out.println("unright");// Sunday in a different week
+	        }
+	    }
+	 
 	 public static void main(String[] args) {
 	    String blog1JsonString = null;
     	String blog2JsonString = null;
@@ -40,13 +52,21 @@ public class testBlog {
 		}
 	 	detailBlog detail =new detailBlog();
 	 	detail.loadData(blog3JsonString);
-	 	detail.displayJsonArray(detail.getListBlog());
+	 	detail.loadData(blog2JsonString);
+	 	detail.loadData(blog4JsonString);
+	 	detail.loadData(blog1JsonString);
+
+	 	
+	 	//detail.displayJsonArray(detail.getListBlog());
 	 	System.out.print("\n");
 	 	System.out.print("\n");
 	 	System.out.print("\n");
 	 	System.out.print("\n");
 	 	System.out.print("\n");
-	 	detail.filterByKeyword(detail.getListBlog(), "collectibles");
-	 	System.out.println("Most Popular Hashtag: " + detail.findMostPopularHashtag(detail.getPostsForDay(detail.getListBlog(), "2023-12-18")));
+	 	
+	 	
+	 	testIsInTargetWeek_Negative();
+	 //	detail.filterByKeyword(detail.getListBlog(), "collectibles");
+	 	//System.out.println("Most Popular Hashtag: " + detail.findMostPopularKeyword(detail.getPostsForDay(detail.getListBlog(), "2023-12-18")));
 		 }
 }
