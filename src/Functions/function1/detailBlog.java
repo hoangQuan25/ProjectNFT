@@ -94,7 +94,7 @@ public class detailBlog {
 	        }
 	    }
 		
-		public String findMostPopularHashtag(ObservableList<blogNews> posts) {
+		public String findMostPopularKeyword(ObservableList<blogNews> posts) {
 	        // Create a map to store the count of each hashtag
 	        Map<String, Integer> keywordCountMap = new HashMap<>();
 
@@ -149,7 +149,7 @@ public class detailBlog {
 		        return postsForWeek;
 		    }
 		 
-		 private boolean isInTargetWeek(String postTime, String targetWeek) {
+		 public boolean isInTargetWeek(String postTime, String targetWeek) {
 		        try {
 		            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		            Date postDate = sdf.parse(postTime);
